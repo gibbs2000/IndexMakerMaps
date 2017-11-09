@@ -24,10 +24,20 @@ public class IndexMaker {
 		w1.add(2);
 		w1.add(34);
 		w1.add(4); // should not be added a second time
-
 		output.println(w1);
 
 		// Tests DocumentIndex thoroughly
+		DocumentIndex doc = new DocumentIndex();
+		int currentLine = 1;
+		while (input.hasNextLine()) {
+			doc.addAllWords(input.nextLine(), currentLine++);
+		}
+
+		output.println(doc);
+
+		// Closes open Scanners and PrintWriters
+		input.close();
+		output.close();
 
 	}
 

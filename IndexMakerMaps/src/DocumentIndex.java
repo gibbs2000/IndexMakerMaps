@@ -54,6 +54,16 @@ public class DocumentIndex extends TreeMap<String, IndexEntry> {
 				addWord(s, num);
 
 		}
+	}
+
+	@Override
+	public String toString() {
+		String s = "";
+		DocumentIndexIterator docIterator = new DocumentIndexIterator();
+		for (IndexEntry w : docIterator) {
+			s += w;
+		}
+		return s;
 
 	}
 }
