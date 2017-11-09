@@ -13,6 +13,7 @@ import java.util.TreeMap;
  * declare a static final serialVersionUID field of type long")
  */
 @SuppressWarnings("serial")
+
 public class DocumentIndex extends TreeMap<String, IndexEntry> {
 	/**
 	 * Default constructor, creates a DocumentIndex of a default size
@@ -33,6 +34,7 @@ public class DocumentIndex extends TreeMap<String, IndexEntry> {
 	 *            the line number to be added to a given word
 	 */
 	public void addWord(String word, int num) {
+		word = word.toUpperCase();
 		if (!this.containsKey(word))
 			this.put(word, new IndexEntry(word));
 		this.get(word).add(num);
@@ -59,11 +61,9 @@ public class DocumentIndex extends TreeMap<String, IndexEntry> {
 	@Override
 	public String toString() {
 		String s = "";
-		DocumentIndexIterator docIterator = new DocumentIndexIterator();
-		for (IndexEntry w : docIterator) {
-			s += w;
-		}
+		for (IndexEntry i : this.values())
+			s += i;
 		return s;
-
 	}
+
 }

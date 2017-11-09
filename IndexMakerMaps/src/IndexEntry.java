@@ -43,7 +43,7 @@ public class IndexEntry implements Comparable<IndexEntry> {
 			if (!(n.equals(numsList.last())))
 				s += n + ", ";
 			else
-				s += n;
+				s += n + "\n";
 		}
 
 		return s;

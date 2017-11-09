@@ -12,13 +12,14 @@ import java.util.Scanner;
 public class IndexMaker {
 
 	public static void main(String[] args) {
-		// TODO make tester lol
 
 		// Creates the input Scanner and the output PrintWriter files
 		Scanner input = fileToScanner(args[0]);
 		PrintWriter output = outputFile("fishIndex.txt");
 
 		// Tests IndexEntry by itself
+		output.println("Tests for IndexEntry" + "\n***********************\n");
+
 		IndexEntry w1 = new IndexEntry("dog");
 		w1.add(4);
 		w1.add(2);
@@ -26,7 +27,22 @@ public class IndexMaker {
 		w1.add(4); // should not be added a second time
 		output.println(w1);
 
+		output.println("Adds another line number");
+		w1.add(17);
+		output.println(w1);
+
+		output.println(
+				"Attempts to add another line number, but since number is already in the entry, IndexEntry should remain unchanged");
+		w1.add(17);
+		output.println(w1);
+		
+		
+		
+		
+		
+		
 		// Tests DocumentIndex thoroughly
+		output.println("Tests for DocumentIndex" + "\n***********************\n");
 		DocumentIndex doc = new DocumentIndex();
 		int currentLine = 1;
 		while (input.hasNextLine()) {
