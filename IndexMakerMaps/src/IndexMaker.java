@@ -13,11 +13,12 @@ public class IndexMaker {
 
 	public static void main(String[] args) {
 
+		// Strings for the files to be scanned or written to
 		String a1 = "";
 		String a2 = "";
 
-		// Checks if there are supplied file names, and, if not, then asks the user for
-		// the necessary files
+		// Checks if there are supplied file names as arguments
+		// if not, then asks the user for the necessary files
 		if (args.length < 2) {
 			System.out.println("You did not input enough files");
 			Scanner kb = new Scanner(System.in);
@@ -34,7 +35,8 @@ public class IndexMaker {
 				try {
 					a2 = a1.substring(0, ext) + "Index" + a1.substring(ext);
 				} catch (IndexOutOfBoundsException ex) {
-					// if there are no periods in the, creates it with the default extension of
+					// if there are no periods in the input file's name, creates it with the default
+					// extension of
 					// ".txt"
 					a2 = a1 + "Index.txt";
 				}
@@ -47,7 +49,12 @@ public class IndexMaker {
 		Scanner input = fileToScanner(a1);
 		PrintWriter output = outputFile(a2);
 
-		// Tests IndexEntry by itself
+		//
+		//
+		//
+		//
+
+		/******* Tests IndexEntry by itself *****/
 		output.println("Tests for IndexEntry" + "\n***********************\n");
 
 		output.println("Create a new IndexEntry");
@@ -66,7 +73,12 @@ public class IndexMaker {
 		w1.add(17);
 		output.println(w1);
 
-		// Tests DocumentIndex thoroughly
+		//
+		//
+		//
+		//
+
+		/****** Tests DocumentIndex thoroughly *******/
 		output.println("Tests for DocumentIndex" + "\n***********************\n");
 
 		output.println("Creates a new DocumentIndex, which should be empty at this point");

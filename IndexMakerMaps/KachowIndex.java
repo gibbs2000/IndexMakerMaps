@@ -16,24 +16,34 @@ Tests for DocumentIndex
 Creates a new DocumentIndex, which should be empty at this point
 
 Indexes all the lines in the given file
-A 12, 14, 15
-ARE 16
-BLACK 6
-BLUE 4, 7
-CAR 14
-FISH 1, 2, 3, 4, 6, 7, 8, 9, 16
-HAS 11, 14
-LITTLE 12, 14
-LOT 15
-NEW 9
-OF 16
-OLD 8
-ONE 1, 11, 14
-RED 3
-SAY 15
-STAR 12
-THERE 16
-THIS 11, 14
-TWO 2
-WHAT 15
+A 2
+ARGS 8
+AUTHOR 4
+BAZINGA 9, 12, 13
+CLASS 2, 7
+FILES 2
+GIBBONS 4
+IF 2
+INDEXMAKER 2
+IS 2
+KACHOW 7
+MAIN 8
+NON 2
+ON 2
+OUT 17
+PRINTLN 17
+PUBLIC 7, 8, 12, 16
+SEAN 4
+SOP 13, 16
+STATIC 8, 12, 16
+STRING 8, 16
+SYSTEM 17
+TEST 2
+THE 2
+THIS 2
+TO 2
+TRASHY 2
+VOID 8, 12, 16
+WORKS 2
+X 16, 17
 
