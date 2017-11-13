@@ -13,18 +13,48 @@ public class IndexMaker {
 
 	public static void main(String[] args) {
 
+		String a1 = "";
+		String a2 = "";
+
+		// Checks if there are supplied file names, and, if not, then asks the user for
+		// the necessary files
+		if (args.length < 2) {
+			System.out.println("You did not input enough files");
+			Scanner kb = new Scanner(System.in);
+			System.out.println("Please type the name of the input file to be indexed");
+			a1 = kb.nextLine();
+			System.out.println("Please type the name of the output file where the index is to be sent");
+			a2 = kb.nextLine();
+			kb.close();
+
+			// Creates a new output file if the user refused to input one by taking the
+			// input file and concatenating "Index" to the end
+			if ("".equals(a2)) {
+				int ext = a1.lastIndexOf(".");
+				try {
+					a2 = a1.substring(0, ext) + "Index" + a1.substring(ext);
+				} catch (IndexOutOfBoundsException ex) {
+					// if there are no periods in the, creates it with the default extension of
+					// ".txt"
+					a2 = a1 + "Index.txt";
+				}
+			}
+		} else {
+			a1 = args[0];
+			a2 = args[1];
+		}
 		// Creates the input Scanner and the output PrintWriter files
-		Scanner input = fileToScanner(args[0]);
-		PrintWriter output = outputFile("fishIndex.txt");
+		Scanner input = fileToScanner(a1);
+		PrintWriter output = outputFile(a2);
 
 		// Tests IndexEntry by itself
 		output.println("Tests for IndexEntry" + "\n***********************\n");
 
+		output.println("Create a new IndexEntry");
 		IndexEntry w1 = new IndexEntry("dog");
 		w1.add(4);
 		w1.add(2);
 		w1.add(34);
-		w1.add(4); // should not be added a second time
 		output.println(w1);
 
 		output.println("Adds another line number");
@@ -35,20 +65,21 @@ public class IndexMaker {
 				"Attempts to add another line number, but since number is already in the entry, IndexEntry should remain unchanged");
 		w1.add(17);
 		output.println(w1);
-		
-		
-		
-		
-		
-		
+
 		// Tests DocumentIndex thoroughly
 		output.println("Tests for DocumentIndex" + "\n***********************\n");
+
+		output.println("Creates a new DocumentIndex, which should be empty at this point");
 		DocumentIndex doc = new DocumentIndex();
+		output.println(doc);
+
+		output.println("Indexes all the lines in the given file");
 		int currentLine = 1;
 		while (input.hasNextLine()) {
 			doc.addAllWords(input.nextLine(), currentLine++);
 		}
 
+		// Prints the index to the output file
 		output.println(doc);
 
 		// Closes open Scanners and PrintWriters
@@ -75,12 +106,12 @@ public class IndexMaker {
 		try {
 			words = new Scanner(fileName);
 		} catch (FileNotFoundException ex) {
-			System.out.print("Unable to Open Given File");
+			System.out.print("That file \"" + fName + "\" does not exist ");
 			return null;
 
 		}
 		if (!words.hasNext())
-			throw new IllegalArgumentException("Given File is empty");
+			throw new IllegalArgumentException("That file is empty");
 		return words;
 
 	}
@@ -101,7 +132,7 @@ public class IndexMaker {
 		try {
 			output = new PrintWriter(fileName);
 		} catch (FileNotFoundException ex) {
-			System.out.print("Cannot open " + fName);
+			System.out.print("Cannot open \"" + fName + " \"");
 			return null;
 
 		}
